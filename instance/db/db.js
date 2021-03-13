@@ -1,34 +1,26 @@
-const express = require('express');
-const app = express();
-const port = 4000;
 const clientMongo = require('mongodb').MongoClient;
 var url = 'mongodb://172.17.0.2:27017/';
-var exec = require('child_process').exec;
 // Nombre de bd
 const dbName = 'names';
 var array = [];
 
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.post('/users', (req, res) => {
+function createUser(users) {
 	clientMongo.connect(url, { useUnifiedTopology: true }, function (err, db) {
 		if (err) throw err;
-
 		var dbo = db.db('names');
 		const names = dbo.collection('info');
 		// create a document to be inserted
 		const doc = {
-			ID: req.body.id,
-			NOMBRE: req.body.name,
+			ID: users.ID,
+			NOMBRE: users.NOMBRE,
 		};
 		const result = names.insertOne(doc);
 		console.log('fue agregado con exito el documento');
-		res.sendStatus(200);
 	});
-});
-
+}
 // Conexión URL (estas corriendo en local :D)
 clientMongo.connect(
 	url,
@@ -73,17 +65,16 @@ const refreshUsersList = async () => {
 	);
 };
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
 	res.send('Llego xD');
 });
 
-// Conectamos al servidor
 app.get('/users', async (req, res) => {
 	await refreshUsersList();
-
 	res.send(array);
-});
+});*/
 
-app.listen(port, () => {
-	console.log(`App listening in the port: ${port}`);
-});
+module.exports = {
+	createUser,
+	refreshUsersList,
+};

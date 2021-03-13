@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/SD-2020-2/proyecto1#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
   }
 }
