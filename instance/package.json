@@ -1,0 +1,26 @@
+{
+  "name": "instance",
+  "version": "1.0.0",
+  "description": "instancia servidor",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SD-2020-2/proyecto1.git"
+  },
+  "keywords": [
+    "instancia"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SD-2020-2/proyecto1/issues"
+  },
+  "homepage": "https://github.com/SD-2020-2/proyecto1#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
