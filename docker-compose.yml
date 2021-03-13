@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  server1: 
+    build: .
+    container_name: instancia1
+    ports: 
+      - "4001:4000"
+  # server2:
+  #   build: .
+  #   container_name: instancia2
+  #   ports: 
+  #     - "4002:4000"  
+  # server3:
+  #   build: .
+  #   container_name: instancia3
+  #   ports: 
+  #     - "4003:4000"  
