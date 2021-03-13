@@ -1,0 +1,28 @@
+{
+  "name": "middleware",
+  "version": "1.0.0",
+  "description": "Middleware proyecto",
+  "main": "middleware.js",
+  "scripts": {
+    "start": "node middleware.js",
+    "dev": "nodemon middleware.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SD-2020-2/proyecto1.git"
+  },
+  "keywords": [
+    "middleware"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SD-2020-2/proyecto1/issues"
+  },
+  "homepage": "https://github.com/SD-2020-2/proyecto1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
