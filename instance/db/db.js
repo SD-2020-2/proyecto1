@@ -10,12 +10,14 @@ var array = [];
 function createUser(users) {
 	clientMongo.connect(url, { useUnifiedTopology: true }, function (err, db) {
 		if (err) throw err;
-		var dbo = db.db('names');
-		const names = dbo.collection('info');
+		var dbo = db.db('users');
+		const names = dbo.collection('users');
 		// create a document to be inserted
 		const doc = {
-			ID: users.ID,
+			CEDULA: users.CEDULA,
 			NOMBRE: users.NOMBRE,
+			CIUDAD: users.CIUDAD,
+			FOTO: users.FOTO,
 		};
 		const result = names.insertOne(doc);
 		console.log('fue agregado con exito el documento');
@@ -29,20 +31,19 @@ clientMongo.connect(
 	},
 	function (err, db) {
 		if (err) throw err;
-		var dbo = db.db('names');
+		var dbo = db.db('users');
 		dbo
-			.collection('info')
+			.collection('users')
 			.find({})
 			.toArray(function (err, result) {
 				if (err) throw err;
-				console.log('lelnado db');
+				console.log('Conexion a BD exitosa');
 				console.log(result);
-				array = result;
-				db.close();
 			});
 	}
 );
-
+//arreglar error que no esta enviando el array al
+//usercontroller
 const refreshUsersList = async () => {
 	await clientMongo.connect(
 		url,
@@ -51,15 +52,16 @@ const refreshUsersList = async () => {
 		},
 		function (err, db) {
 			if (err) throw err;
-			var dbo = db.db('names');
+			var dbo = db.db('users');
 			dbo
-				.collection('names')
+				.collection('users')
 				.find({})
 				.toArray(function (err, result) {
 					if (err) throw err;
-					console.log('lelnado db');
+					console.log('lista de Info');
 					array = result;
 					db.close();
+					return array;
 				});
 		}
 	);

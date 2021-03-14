@@ -1,15 +1,4 @@
-const { execSync } = require('child_process');
-
-/*db.createUser(
-	{
-	  user: "cris",
-	  pwd: "cris",
-	  roles: [
-		 { role: "root", db: "admin" }
-	  ]
-	}
-  );*/
-  
+const { execSync } = require('child_process');  
 
 const backUpdatabase = () => {
 	execSync('mongodump --forceTableScan --username="cris" --password="cris" --host="172.17.0.2" --port=27017', (err, stdout, stderr) => {
@@ -35,3 +24,14 @@ module.exports = {
 	backUpdatabase,
 	restoreDB,
 };
+
+
+/*db.createUser(
+	{
+	  user: "cris",
+	  pwd: "cris",
+	  roles: [
+		 { role: "root", db: "admin" }
+	  ]
+	}
+  );*/
