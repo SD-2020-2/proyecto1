@@ -5,17 +5,21 @@ var fs = require('fs');
 const router = Router();
 router.use(express.json());
 var cloudinary = require('cloudinary');
+
 cloudinary.config({
 	cloud_name: 'cristhian',
 	api_key: '224758247675888',
 	api_secret: 'Pmr8UTHjAWwJ9uOBUWjeHsepV34',
 });
+
 var urlimage;
+
 function uploadImageServer() {
 	cloudinary.uploader.upload('./public/img.jpg', function (error, result) {
 		console.log(error.url);
 	});
 }
+
 router.get('/agregar', (req, res) => {
 	uploadImageServer();
 	var url = `http://localhost:4000/agregar`;
@@ -40,7 +44,7 @@ router.get('/agregar', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-	res.send('<h1>Router working !</h1>');
+	res.send(`Middleware router working on`);
 });
 
 module.exports = router;

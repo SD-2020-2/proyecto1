@@ -24,24 +24,24 @@ function createUser(users) {
 	});
 }
 // Conexión URL (estas corriendo en local :D)
-clientMongo.connect(
-	url,
-	{
-		useUnifiedTopology: true,
-	},
-	function (err, db) {
-		if (err) throw err;
-		var dbo = db.db('users');
-		dbo
-			.collection('users')
-			.find({})
-			.toArray(function (err, result) {
-				if (err) throw err;
-				console.log('Conexion a BD exitosa');
-				console.log(result);
-			});
-	}
-);
+// clientMongo.connect(
+// 	url,
+// 	{
+// 		useUnifiedTopology: true,
+// 	},
+// 	function (err, db) {
+// 		if (err) throw err;
+// 		var dbo = db.db('users');
+// 		dbo
+// 			.collection('users')
+// 			.find({})
+// 			.toArray(function (err, result) {
+// 				if (err) throw err;
+// 				console.log('Conexion a BD exitosa');
+// 				console.log(result);
+// 			});
+// 	}
+// );
 //arreglar error que no esta enviando el array al
 //usercontroller
 const refreshUsersList = async () => {
