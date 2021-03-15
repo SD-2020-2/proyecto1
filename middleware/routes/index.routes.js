@@ -47,4 +47,11 @@ router.get('/', (req, res) => {
 	res.send(`Middleware router working on`);
 });
 
+router.post('/status', (req, res) => {
+	axios
+		.get('/')
+		.then((response) => res.send(response.data))
+		.catch((err) => console.log('Ocurrio un error en status middleware ', err));
+});
+
 module.exports = router;
