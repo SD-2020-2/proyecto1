@@ -10,8 +10,12 @@ docker stop grafana | xargs docker rm
 echo '--- Creando 3 instancias ---'
 /bin/bash create-instances.sh
 
+echo ''
 echo '--- Creando Prometheus ---'
-/bin/bash /middleware/prometheus/prometheus.sh
+#cd ..
+/bin/bash middleware/prometheus/prometheus.sh
 
+echo ''
 echo '--- Creando Grafana ---'
+#cd ..
 /bin/bash middleware/grafana/grafana.sh
