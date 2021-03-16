@@ -10,3 +10,5 @@ docker run --name grafana -d --rm -p 3000:3000 \
   grafana/grafana:7.1.5
 
   #http://localhost:3000
+  # ver el contenido de datasources.yml del contenedor
+  #docker exec -it grafana cat /etc/grafana/provisioning/datasources/datasources.yml
