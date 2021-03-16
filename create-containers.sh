@@ -19,4 +19,5 @@ cd "$(pwd)"/prometheus
 # cd ../grafana
 # /bin/bash grafana.sh
 
-echo 'OK ! :D'
+echo ''
+echo '--- OK ! :D ---'
