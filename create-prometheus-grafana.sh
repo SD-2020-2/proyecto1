@@ -6,9 +6,6 @@ docker stop prome | xargs docker rm
 echo '--- Eliminando Grafana ---'
 docker stop grafana | xargs docker rm
 
-echo '--- Creando 3 instancias ---'
-/bin/bash create-instances.sh
-
 echo ''
 echo '--- Creando Prometheus ---'
 cd "$(pwd)"/middleware/prometheus
