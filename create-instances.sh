@@ -15,12 +15,23 @@ echo ''
 echo '... Iniciando instancias ...'
 echo '... instance1 creada ...'
 docker run --name instance1 -p 4000:4000 -d instance
+# echo ''
+# echo '... instance2 creada ...'
+# docker run --name instance2 -p 4001:4000 -d instance
+# echo ''
+# echo '... instance3 creada ...'
+# docker run --name instance3 -p 4002:4000 -d instance
+
 echo ''
-echo '... instance2 creada ...'
-docker run --name instance2 -p 4001:4000 -d instance
-echo ''
-echo '... instance3 creada ...'
-docker run --name instance3 -p 4002:4000 -d instance
+echo '... Iniciando node_exporter ...'
+echo '...       instance1 ...'
+docker exec instance1 ./node_exporter-1.1.2.linux-amd64/node_exporter &
+
+# echo ''
+# echo '...       instance2 ...'
+
+# echo ''
+# echo '...       instance3 ...'
 
 # Ver las ips de los contenedores
 #docker inspect -f '{{.Name}} {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)

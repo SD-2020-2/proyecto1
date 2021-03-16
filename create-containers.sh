@@ -11,10 +11,12 @@ echo '--- Creando 3 instancias ---'
 
 echo ''
 echo '--- Creando Prometheus ---'
-cd "$(pwd)"/middleware/prometheus
+cd "$(pwd)"/prometheus
 /bin/bash prometheus.sh
 
-echo ''
-echo '--- Creando Grafana ---'
-cd ../grafana
-/bin/bash grafana.sh
+# echo ''
+# echo '--- Creando Grafana ---'
+# cd ../grafana
+# /bin/bash grafana.sh
+
+echo 'OK ! :D'

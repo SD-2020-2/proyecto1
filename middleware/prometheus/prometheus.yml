@@ -1,7 +1,0 @@
-global:
-  scrape_interval: 5s
-scrape_configs:
-  - job_name: 'example-nodejs-app'
-    static_configs:
-      - targets: ['192.168.0.28:2000']
-      # - targets: ['localhost:2000']
