@@ -23,12 +23,10 @@
   "homepage": "https://github.com/SD-2020-2/proyecto1#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "cloudinary": "^1.25.0",
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.1",
-    "msexcel-builder": "0.0.2",
-    "nodemon": "^2.0.7",
     "morgan": "^1.10.0",
-    "xlsx": "^0.16.9"
+    "nodemon": "^2.0.7",
+    "redis": "^3.0.2",
+    "redis-server": "^1.2.2"
   }
 }

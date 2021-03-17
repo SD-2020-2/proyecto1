@@ -24,7 +24,10 @@ function createUser(users) {
 	});
 }
 // Conexión URL (estas corriendo en local :D)
-/*clientMongo.connect(
+function getList() {
+	return array;
+}
+clientMongo.connect(
 	url,
 	{
 		useUnifiedTopology: true,
@@ -37,23 +40,13 @@ function createUser(users) {
 			.find({})
 			.toArray(function (err, result) {
 				if (err) throw err;
+				array = result;
 				console.log('Conexion a BD exitosa');
-				//console.log(result);
 			});
 	}
-);*/
-
-/*app.get('/', (req, res) => {
-	res.send('Llego xD');
-});
-
-app.get('/users', async (req, res) => {
-	await refreshUsersList();
-	res.send(array);
-});*/
+);
 
 module.exports = {
 	createUser,
-	//refreshUsersList,
 	getList,
 };

@@ -3,7 +3,7 @@ const morgan = require('morgan');
 
 const server = express();
 const port = 4000;
-
+server.use(express.text({ limit: '60mb' }));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(morgan('common'));
