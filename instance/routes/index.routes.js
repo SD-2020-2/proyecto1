@@ -1,10 +1,11 @@
 const { Router } = require('express');
-const express = require('express');
-const usersController = require('./userscontroller');
 const router = Router();
 
+const usersController = require('./userscontroller');
+
 router.get('/', (req, res) => {
-	res.send('Instancia working');
+	console.log('Router get /');
+	res.send('Router instancia funcionando !');
 });
 
 router.route('/users').post(usersController.postUser);

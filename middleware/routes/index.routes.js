@@ -12,12 +12,15 @@ cloudinary.config({
 	api_key: '224758247675888',
 	api_secret: 'Pmr8UTHjAWwJ9uOBUWjeHsepV34',
 });
+
 var urlimage;
+
 function uploadImageServer() {
 	cloudinary.uploader.upload('./public/img.jpg', function (error, result) {
 		console.log(error.url);
 	});
 }
+
 router.get('/agregar', (req, res) => {
 	uploadImageServer();
 	var url = `http://localhost:4000/agregar`;

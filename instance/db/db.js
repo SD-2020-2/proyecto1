@@ -24,7 +24,7 @@ function createUser(users) {
 	});
 }
 // Conexión URL (estas corriendo en local :D)
-clientMongo.connect(
+/*clientMongo.connect(
 	url,
 	{
 		useUnifiedTopology: true,
@@ -41,36 +41,7 @@ clientMongo.connect(
 				//console.log(result);
 			});
 	}
-);
-
-function getList() {
-	console.log(array[0].CIUDAD);
-	return array;
-	
-}
-
-clientMongo.connect(
-	url,
-	{
-		useUnifiedTopology: true,
-	},
-	function (err, db) {
-		if (err) throw err;
-		var dbo = db.db('users');
-		dbo
-			.collection('users')
-			.find({})
-			.toArray(function (err, result) {
-				if (err) throw err;
-				console.log('lista de Info');
-				array = result;
-				return result;
-				return array;
-				db.close();
-			});
-	}
-);
-//};
+);*/
 
 /*app.get('/', (req, res) => {
 	res.send('Llego xD');
