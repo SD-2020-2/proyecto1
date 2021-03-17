@@ -1,4 +1,4 @@
-const { createUser, refreshUsersList } = require('../db/db');
+const { createUser, refreshUsersList, getList } = require('../db/db');
 
 const postUser = (req, res) => {
 	console.log(req.body);
@@ -7,12 +7,14 @@ const postUser = (req, res) => {
 };
 
 const getUser = (req, res) => {
-	let infoAUx = refreshUsersList();
-	console.log(infoAUx);
-	res.sendStatus(200).send(infoAUx);
+	let infoAUx = getList();
+	console.log(Object.values(infoAUx));
+	//send(infoAUx);
+	res.send(Object.values(infoAUx));
 };
 
 module.exports = {
 	postUser,
 	getUser,
+	getList,
 };

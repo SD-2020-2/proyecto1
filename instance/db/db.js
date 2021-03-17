@@ -38,34 +38,39 @@ clientMongo.connect(
 			.toArray(function (err, result) {
 				if (err) throw err;
 				console.log('Conexion a BD exitosa');
-				console.log(result);
+				//console.log(result);
 			});
 	}
 );
-//arreglar error que no esta enviando el array al
-//usercontroller
-const refreshUsersList = async () => {
-	await clientMongo.connect(
-		url,
-		{
-			useUnifiedTopology: true,
-		},
-		function (err, db) {
-			if (err) throw err;
-			var dbo = db.db('users');
-			dbo
-				.collection('users')
-				.find({})
-				.toArray(function (err, result) {
-					if (err) throw err;
-					console.log('lista de Info');
-					array = result;
-					db.close();
-					return array;
-				});
-		}
-	);
-};
+
+function getList() {
+	console.log(array[0].CIUDAD);
+	return array;
+	
+}
+
+clientMongo.connect(
+	url,
+	{
+		useUnifiedTopology: true,
+	},
+	function (err, db) {
+		if (err) throw err;
+		var dbo = db.db('users');
+		dbo
+			.collection('users')
+			.find({})
+			.toArray(function (err, result) {
+				if (err) throw err;
+				console.log('lista de Info');
+				array = result;
+				return result;
+				return array;
+				db.close();
+			});
+	}
+);
+//};
 
 /*app.get('/', (req, res) => {
 	res.send('Llego xD');
@@ -78,5 +83,6 @@ app.get('/users', async (req, res) => {
 
 module.exports = {
 	createUser,
-	refreshUsersList,
+	//refreshUsersList,
+	getList,
 };
