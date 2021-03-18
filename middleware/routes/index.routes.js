@@ -54,12 +54,52 @@ router.get('/getExcel', (req, res) => {
 });
 
 router.get('/getUsers', (req, res) => {
+	var url = `http://localhost:4000/getUsers`;
 	axios({
 		method: 'get',
 		url,
 	})
 		.then((response) => {
-			console.log(response);
+			console.log(response.data);
+		})
+		.catch((e) => {
+			console.log(e);
+		});
+	res.send('Informacion Recibida');
+});
+var city = [];
+
+router.get('/getCity', (req, res) => {
+	var url = `http://localhost:4000/getusers`;
+	axios({
+		method: 'get',
+		url,
+	})
+		.then((response) => {
+			var auxjson = response.data;
+			axios({
+				method: 'get',
+				url: `http://localhost:6000/write`,
+			})
+				.then((response) => {})
+				.catch((e) => {
+					console.log(e);
+				});
+		})
+		.catch((e) => {
+			console.log(e);
+		});
+	res.send('Informacion Recibida');
+});
+
+router.get('/getCache', (req, res) => {
+	var url = `http://localhost:6000/obtein`;
+	axios({
+		method: 'get',
+		url,
+	})
+		.then((response) => {
+			console.log(response.data);
 		})
 		.catch((e) => {
 			console.log(e);

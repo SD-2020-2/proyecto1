@@ -27,6 +27,7 @@ function createUser(users) {
 function getList() {
 	return array;
 }
+
 clientMongo.connect(
 	url,
 	{
@@ -37,9 +38,10 @@ clientMongo.connect(
 		var dbo = db.db('users');
 		dbo
 			.collection('users')
-			.find({})
+			.find({}, { CIUDAD: true, _id: false })
 			.toArray(function (err, result) {
 				if (err) throw err;
+				
 				array = result;
 				console.log('Conexion a BD exitosa');
 			});
