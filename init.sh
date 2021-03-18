@@ -18,4 +18,4 @@ echo '**** Creando contenedores ****'
 /bin/bash create-containers.sh
 
 echo ''
-echo '**** :D Finished :D ! ****'
+echo '****==** :D Finished :D ! **==****'

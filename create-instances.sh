@@ -37,5 +37,18 @@ echo ''
 echo '...       instance3 ...'
 docker exec instance3 ./node_exporter-1.1.2.linux-amd64/node_exporter &
 
+echo ''
+echo '--- Iniciando promtail en las instancias para logging ---'
+echo '...       instance1 ...'
+docker exec -d instance1 ./promtail-conf/promtail-linux-amd64 -config.file ./promtail-conf/config-promtail.yml &
+
+echo ''
+echo '...       instance2 ...'
+docker exec instance2 ./promtail-conf/promtail-linux-amd64 -config.file ./promtail-conf/config-promtail.yml &
+
+echo ''
+echo '...       instance3 ...'
+docker exec instance3 ./promtail-conf/promtail-linux-amd64 -config.file ./promtail-conf/config-promtail.yml &
+
 # Ver las ips de los contenedores
 #docker inspect -f '{{.Name}} {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)

@@ -20,4 +20,9 @@ cd ../grafana
 /bin/bash grafana.sh
 
 echo ''
+echo '--- Creando Loki logging ---'
+cd ../loki
+/bin/bash create-loki.sh
+
+echo ''
 echo '--- OK ! :D ---'
