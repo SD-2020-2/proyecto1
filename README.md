@@ -8,10 +8,15 @@
   * [Networking del proyecto](#network-proyecto)
 * [Dependencias](#dependencias)
   * [Instancia](#dependencias-instancia) 
-    * [NPM](#npm-instancia) 
+    * [NPM](#npm-instancia)
+    * [Monitoreo Node Exporter](#monitoreo)
+    * [Logging Promtail](#logging)
   * [Middleware](#dependencias-middleware)
     * [Balanceo de carga](#balanceo-de-carga)
     * [NPM](#npm-middleware) 
+  * [Prometheus para monitoreo](#prometheus)
+  * [Loki para Logging](#loki)
+  * [Grafana gráficos](#grafana)
 * [Desarrolladores](#desarrolladores)
 
 ## Arquitectura
@@ -42,15 +47,22 @@ Correr el bash "init.sh" desde la carpeta raiz, usando:
 bash init.sh
 ```
 ### Network proyecto
-Basado en el networking que crea Docker:
+Basado en el networking que crea Docker, puedes testear los containers en:
 
-- grafana 172.17.0.7
-- prome 172.17.0.6
-- instance3 172.17.0.5
-- instance2 172.17.0.4
-- instance1 172.17.0.3
-- loki 172.17.0.8
-- mongo 172.17.0.2
+- Loki:
+  - http://172.17.0.8:3100
+- Grafana:
+  - http://172.17.0.7:3000
+- Prometheus:
+  - http://172.17.0.6:9090
+- Instancia 3:
+  - http://172.17.0.5:4000
+- Instancia 2:
+  - http://172.17.0.4:4000
+- Instancia 1:
+  - http://172.17.0.3:4000
+- MongoDB:
+  - http://172.17.0.2:27017
 
 ## Dependencias
 Detalle de las dependencias del proyecto:
@@ -64,6 +76,14 @@ Detalle de las dependencias del proyecto:
 "winston": "^3.3.3",
 "xlsx": "^0.16.9"
 ```
+#### Monitoreo
+Se usa en los contenedores [Node Exporter](https://github.com/prometheus/node_exporter), y este apunta a **Prometheus**.
+No es necesario instalarlo manualmente ya que la instancia realiza este procedimiento.
+
+#### Logging
+Para el logging de cada instancia se usa [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/configuration/).
+Promtail apunta a **Grafana/Loki**, el cual centraliza los loggins y los envia a **Grafana**
+Tampoco es necesario instalarlo manualmente ya que la instancia realiza este procedimiento.
 
 ### Dependencias middleware
 #### Balanceo de carga
@@ -77,6 +97,18 @@ Se uso **nginx** para el balanceo de carga, su configuración se puede ver en [n
 "redis": "^3.0.2",
 "redis-server": "^1.2.2"
 ```
+
+## Prometheus
+Se usa [Prometheus](https://prometheus.io/) para centralizar el monitoreo, enviado por cada instancia, desde **Node_Exporter**, luego
+estos se envian a **Grafana** para ser visualizados.
+
+## Loki
+[Loki/Grafana] se usa para centralizar todos los logs que generan las instancias, desde **Promtail**, luego estos se envian a **Grafana**
+para ser visualizados desde el modulo "explorer" o en un panel.
+Para mostarlos en Grafana, primero se debe configurar grafana para [añadir](https://grafana.com/docs/loki/latest/getting-started/grafana/) este "data source".
+
+## Grafana
+La plataforma [Grafana](https://grafana.com/) se usa para visualizar en gráficos y los logs de todo el sistema, es decir para centralizar logs y para generar gráficas de peticiones http o análisis de estadísticas generadas por las instancias.
 
 ## Desarrolladores
 - [Mati Rodriguez](https://github.com/limarosa29)
