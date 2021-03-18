@@ -56,11 +56,6 @@ app.get('/obtein', (req, res) => {
 			vector.set(ciudadesUnicas[i], recipe);
 		});
 	}
-	var x = 0;
-	console.log('imprimexD');
-	for (let i = 0; i < info.length; i++) {
-		console.log(info[i]);
-	}
 	var data = [
 		{
 			x: ciudadesUnicas,

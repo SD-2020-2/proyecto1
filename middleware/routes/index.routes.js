@@ -14,17 +14,17 @@ function base64_encode(file) {
 	return new Buffer(bitmap).toString('base64');
 }
 
-router.get('/enviar', (req, res) => {
-	urlimage = base64_encode('./public/prueba.jpg');
+router.post('/enviar', (req, res) => {
+	urlimage = base64_encode('./public/imagen.jpg');
 	var url = `/users`;
 	let base64Image = urlimage;
 	axios({
 		method: 'post',
 		url: url,
 		data: {
-			CEDULA: '123123',
-			NOMBRE: 'Camilo Andres',
-			CIUDAD: 'Tunja',
+			CEDULA: req.body.CEDULA,
+			NOMBRE: req.body.NOMBRE,
+			CIUDAD: req.body.CIUDAD,
 			FOTO: base64Image,
 		},
 	})

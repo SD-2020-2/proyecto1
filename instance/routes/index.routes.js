@@ -2,6 +2,7 @@ const { Router } = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const router = Router();
+const logger = require('./../logging/logger');
 router.use(bodyParser.text({ limit: '60mb' }));
 
 const usersController = require('./userscontroller');
