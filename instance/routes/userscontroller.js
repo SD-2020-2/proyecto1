@@ -31,11 +31,13 @@ const postUser = (req, res) => {
 		req.body.FOTO = result.url;
 		createUser(req.body);
 	});
+	logger.log('info', `Usuario Creado`);
 	res.sendStatus(200);
 };
 
 const getExcel = (req, res) => {
 	ExcelAJSON(getList());
+	logger.log('info', `Archivo Excel Enviado`);
 	res.send(base64_encode('./archivo.xls'));
 };
 
@@ -43,6 +45,7 @@ const getUser = (req, res) => {
 	let infoAUx = getList();
 	console.log(req);
 	console.log(Object.values(infoAUx));
+	logger.log('info', `Lista obtenida`);
 	res.send(Object.values(infoAUx));
 };
 

@@ -12,5 +12,5 @@ server.use(require('./routes/index.routes'));
 
 server.listen(port, () => {
 	// console.log(`Instancia corriendo en ${port}`);
-	logger.log('alert', `Instancia corriendo en ${port}`);
+	logger.log('info', `Instancia corriendo en ${port}`);
 });

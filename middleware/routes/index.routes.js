@@ -16,15 +16,15 @@ function base64_encode(file) {
 
 router.get('/enviar', (req, res) => {
 	urlimage = base64_encode('./public/prueba.jpg');
-	var url = `http://{}:4000/users`;
+	var url = `/users`;
 	let base64Image = urlimage;
 	axios({
 		method: 'post',
 		url: url,
 		data: {
-			CEDULA: '345546456',
-			NOMBRE: 'Andrea Echeverry',
-			CIUDAD: 'Cali',
+			CEDULA: '123123',
+			NOMBRE: 'Camilo Andres',
+			CIUDAD: 'Tunja',
 			FOTO: base64Image,
 		},
 	})
@@ -38,7 +38,7 @@ router.get('/enviar', (req, res) => {
 });
 
 router.get('/getExcel', (req, res) => {
-	var url = `http://localhost:4000/getExcel`;
+	var url = `/getExcel`;
 	axios({
 		method: 'get',
 		url,
@@ -54,7 +54,7 @@ router.get('/getExcel', (req, res) => {
 });
 
 router.get('/getUsers', (req, res) => {
-	var url = `http://localhost:4000/getUsers`;
+	var url = `/getUsers`;
 	axios({
 		method: 'get',
 		url,
@@ -70,7 +70,7 @@ router.get('/getUsers', (req, res) => {
 var city = [];
 
 router.get('/getCity', (req, res) => {
-	var url = `http://localhost:4000/getusers`;
+	var url = `/getusers`;
 	axios({
 		method: 'get',
 		url,
