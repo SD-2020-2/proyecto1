@@ -18,4 +18,5 @@ scrape_configs:
           - localhost
         labels:
           job: varlogs
-          __path__: /usr/src/app/apache_logs.log
+          # __path__: /usr/src/app/apache_logs.log
+          __path__: /usr/src/app/instance.log
