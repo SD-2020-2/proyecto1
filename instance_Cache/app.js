@@ -16,6 +16,8 @@ client.on('error', (error) => {
 var ciudades = [];
 var numCiudades;
 var ciudadesUnicas = [];
+let prueba;
+var info = [];
 
 app.get('/write', (req, res) => {
 	var url = `http://localhost:4000/getUsers`;
@@ -33,12 +35,12 @@ app.get('/write', (req, res) => {
 		});
 		unicos = new Set(ciudades);
 		//
-		let prueba = new Map();
+		prueba = new Map();
 		ciudades.forEach(function (i) {
 			prueba[i] = (prueba[i] || 0) + 1;
 		});
-		var x = 0;
 		ciudadesUnicas = Object.keys(prueba);
+		info = Object.values(prueba);
 		for (let item of unicos) {
 			client.setex(item, 80000, prueba[item]);
 		}
@@ -48,18 +50,21 @@ app.get('/write', (req, res) => {
 
 app.get('/obtein', (req, res) => {
 	let vector = new Map();
+	var aux = [];
 	for (let i = 0; i < ciudadesUnicas.length; i++) {
-		client.get(ciudadesUnicas[i], async (err, recipe) => {
+		client.get(ciudadesUnicas[i], (err, recipe) => {
 			vector.set(ciudadesUnicas[i], recipe);
 		});
 	}
-	for (let [key, value] of vector) {
-		console.log(key + ' goes ' + value);
+	var x = 0;
+	console.log('imprimexD');
+	for (let i = 0; i < info.length; i++) {
+		console.log(info[i]);
 	}
 	var data = [
 		{
-			x: ['Tunja', 'Cali'],
-			y: [2, 1],
+			x: ciudadesUnicas,
+			y: info,
 			type: 'bar',
 		},
 	];

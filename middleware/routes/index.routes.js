@@ -16,7 +16,7 @@ function base64_encode(file) {
 
 router.get('/enviar', (req, res) => {
 	urlimage = base64_encode('./public/prueba.jpg');
-	var url = `http://localhost:4000/users`;
+	var url = `http://{}:4000/users`;
 	let base64Image = urlimage;
 	axios({
 		method: 'post',
