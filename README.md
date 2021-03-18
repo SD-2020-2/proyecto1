@@ -6,11 +6,17 @@
 * [¿ Cómo usar este proyecto ?](#usar-este-proyecto)
   * [Construir el proyecto](#construir-el-proyecto) 
   * [Networking del proyecto](#network-proyecto)
-* [Arquitectura](#arquitectura)
+* [Dependencias](#dependencias)
+  * [Instancia](#dependencias-instancia) 
+    * [NPM](#npm-instancia) 
+  * [Middleware](#dependencias-middleware)
+    * [Balanceo de carga](#balanceo-de-carga)
+    * [NPM](#npm-middleware) 
+* [Desarrolladores](#desarrolladores)
 
 ## Arquitectura
 A continuación se muestra la arquitectura "distribuida" del proyecto
-![arquitectura](Diagrama de componentes.jpeg)
+![arquitectura](diagram.jpeg)
 
 ## Enunciado
 Implementar un sistema con balanceo de carga, almacenamiento a tres niveles(archivos, disco(BD) y memoria(cache-ram)),  registro de logging centralizado, monitoreo (de servicios) y tolerancia a fallos de instancias, donde se tenga un servidor middleware que redireccione las peticiones a minimo tres maquinas replica. Es decir que la aplicación tiene balanceo de carga con tres servidores de aplicaciones.
@@ -45,3 +51,34 @@ Basado en el networking que crea Docker:
 - instance1 172.17.0.3
 - loki 172.17.0.8
 - mongo 172.17.0.2
+
+## Dependencias
+Detalle de las dependencias del proyecto:
+### Dependencias instancia
+#### NPM Instancia
+```
+"cloudinary": "^1.25.0",
+"express": "^4.17.1",
+"fs": "0.0.1-security",
+"mongodb": "^3.6.4",
+"winston": "^3.3.3",
+"xlsx": "^0.16.9"
+```
+
+### Dependencias middleware
+#### Balanceo de carga
+Se uso **nginx** para el balanceo de carga, su configuración se puede ver en [nginx.conf](nginx.conf)
+
+#### NPM Middleware
+```
+"axios": "^0.21.1",
+"express": "^4.17.1",
+"nodemon": "^2.0.7",
+"redis": "^3.0.2",
+"redis-server": "^1.2.2"
+```
+
+## Desarrolladores
+- [Mati Rodriguez](https://github.com/limarosa29)
+- [Christian Chamorro](https://github.com/cris201497https://github.com/limarosa291130)
+- [Oscar Rojas](https://github.com/augusticor)
